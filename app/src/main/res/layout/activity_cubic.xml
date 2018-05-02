@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.example.gaope.pathbessel.CubicView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:text="控制点1"
         android:id="@+id/cubic_one"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:text="控制点2"
         android:id="@+id/cubic_two"/>
 
-</RelativeLayout>
+    <com.example.gaope.pathbessel.CubicView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cubicview"/>
+
+
+</LinearLayout>
