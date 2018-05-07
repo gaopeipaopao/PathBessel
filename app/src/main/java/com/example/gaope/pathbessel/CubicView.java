@@ -24,7 +24,7 @@ public class CubicView extends View {
     /**
      * 中心点
      */
-    private PointF center ;
+    private PointF center;
 
     /**
      * 控制点1
@@ -34,17 +34,17 @@ public class CubicView extends View {
     /**
      * 控制点2
      */
-    private PointF control2 ;
+    private PointF control2;
 
     /**
      * 起点
      */
-    private PointF start ;
+    private PointF start;
 
     /**
      * 终点
      */
-    private PointF end ;
+    private PointF end;
 
     /**
      * 画笔
@@ -54,10 +54,12 @@ public class CubicView extends View {
     /**
      * 控制是哪个触摸点
      */
-    private  int mode ;
+    private int mode;
+
+    private boolean isTouch;
 
 
-    public CubicView(Context context)  {
+    public CubicView(Context context) {
         super(context);
     }
 
@@ -65,11 +67,11 @@ public class CubicView extends View {
         super(context, attrs);
 
 
-        center = new PointF(0,0);
-        control1 = new PointF(0,0);
-        control2 = new PointF(0,0);
-        start = new PointF(0,0);
-        end  = new PointF(0,0);
+        center = new PointF(0, 0);
+        control1 = new PointF(0, 0);
+        control2 = new PointF(0, 0);
+        start = new PointF(0, 0);
+        end = new PointF(0, 0);
 
         paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
@@ -82,8 +84,8 @@ public class CubicView extends View {
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
 
-        center.x = w/2;
-        center.y = h/2;
+        center.x = w / 2;
+        center.y = h / 2;
 //        Log.d(TAG,"getWidth:"+getWidth());
 //        Log.d(TAG,"centerX:"+center.x+"   centerY:"+center.y);
 
@@ -102,19 +104,18 @@ public class CubicView extends View {
 
     }
 
-    public void setMode(int mode1){
+    public void setMode(int mode1) {
         mode = mode1;
-        Log.d(TAG,"aaa");
-        Log.d(TAG,"mode1:"+mode1);
-        Log.d(TAG,"mode:"+mode);
+        Log.d(TAG, "aaa");
+        Log.d(TAG, "mode1:" + mode1);
+        Log.d(TAG, "mode:" + mode);
     }
-
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.d(TAG,"bbb");
-        Log.d(TAG,"mode:"+mode);
+        Log.d(TAG, "bbb");
+        Log.d(TAG, "mode:" + mode);
         if (mode > 1){
             control2.x = event.getX();
             control2.y = event.getY();
@@ -127,8 +128,32 @@ public class CubicView extends View {
             return true;
         }
 
+        /**
+         * 多点触控
+         */
+//        switch (event.getAction() & MotionEvent.ACTION_MASK) {//多点触控
+//            case MotionEvent.ACTION_POINTER_DOWN:
+//                isTouch = true;
+//                break;
+//            case MotionEvent.ACTION_POINTER_UP:
+//                isTouch = false;
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//                control1.x = event.getX(0);
+//                control1.y = event.getY(0);
+//                if (isTouch) {
+//                    control2.x = event.getX(1);
+//                    control2.y = event.getY(1);
+//                }
+//                invalidate();
+//                break;
+//        }
+//        return true;
+
 
     }
+
+
 
 
     @Override
