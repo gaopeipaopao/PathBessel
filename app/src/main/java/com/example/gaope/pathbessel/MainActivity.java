@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button two;
     private Button three;
     private Button example;
+    private Button wave;
 
 
     @Override
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         two = (Button)findViewById(R.id.two);
         three = (Button)findViewById(R.id.three);
         example = (Button)findViewById(R.id.example);
+        wave = (Button)findViewById(R.id.wave);
 
 
         two.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,Example.class);
+                startActivity(intent);
+            }
+        });
+        wave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,WaveActivity.class);
                 startActivity(intent);
             }
         });
