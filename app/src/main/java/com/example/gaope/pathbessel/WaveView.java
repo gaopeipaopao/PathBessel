@@ -45,11 +45,13 @@ public class WaveView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         center.x = 0;
         center.y = h/2 + 200;
-
+        Log.d(TAG,"center.y:"+center.y);
+        Log.d(TAG,"height:"+getHeight());
         Log.d(TAG,"width:"+getWidth());
 
         point[0] = center.x - getWidth();
         point[1] = center.y;
+
         point[2] = center.x - getWidth()/2;
         point[3] = center.y;
         point[4] = center.x;
@@ -58,7 +60,7 @@ public class WaveView extends View {
         point[7] = center.y;
         point[8] = center.x + getWidth();
         point[9] = center.y;
-
+        Log.d(TAG,"point1:"+point[1]);
         control[0] = (point[0] + point[2]) / 2;
         control[1] = center.y - 50;
         control[2] = (point[2] + point[4]) / 2;
@@ -73,11 +75,13 @@ public class WaveView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawCircle(test.x,test.y,10,paint);
+//        canvas.drawCircle(300,300,10,paint);
+
 
 
         Path path = new Path();
         path.reset();
+
         path.moveTo(point[0],point[1]);
         path.quadTo(control[0],control[1],point[2],point[3]);
         path.quadTo(control[2],control[3],point[4],point[5]);
@@ -91,7 +95,6 @@ public class WaveView extends View {
 
         if(a == 1){
             aa();
-
         }
 
         a ++;
@@ -104,7 +107,7 @@ public class WaveView extends View {
         ValueAnimator valueAnimator = ValueAnimator.ofFloat( point[0],point[4]);
       //  valueAnimator.setRepeatCount(ValueAnimator.INFINITE);
         valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-        valueAnimator.setDuration(1000);
+        valueAnimator.setDuration(3000);
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -123,6 +126,18 @@ public class WaveView extends View {
                 control[2] = (point[2] + point[4]) / 2;
                 control[4] = (point[4] + point[6]) / 2;
                 control[6] = (point[6] + point[8]) / 2;
+                if (point[1] >  300) {
+                    point[1] =  (point[1] - 5);
+                    point[3] =  (point[3] - 5);
+                    point[5] =  (point[5] - 5);
+                    point[7] =  (point[7] - 5);
+                    point[9] =  (point[9] - 5);
+
+                    control[1] = point[1] - 50;
+                    control[3] = point[1] + 50;
+                    control[5] = point[1] - 50;
+                    control[7] = point[1] + 50;
+                }
 
                 invalidate();
             }
