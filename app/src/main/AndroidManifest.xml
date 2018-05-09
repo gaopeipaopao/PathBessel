@@ -19,7 +19,8 @@
         <activity android:name=".Quad" />
         <activity android:name=".Cubic" />
         <activity android:name=".Example" />
-        <activity android:name=".WaveActivity"></activity>
+        <activity android:name=".WaveActivity" />
+        <activity android:name=".PlaneActivity"></activity>
     </application>
 
 </manifest>

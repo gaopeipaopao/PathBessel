@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private Button three;
     private Button example;
     private Button wave;
+    private Button plane;
 
 
     @Override
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         three = (Button)findViewById(R.id.three);
         example = (Button)findViewById(R.id.example);
         wave = (Button)findViewById(R.id.wave);
+        plane = (Button)findViewById(R.id.plane);
 
 
         two.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,WaveActivity.class);
+                startActivity(intent);
+            }
+        });
+        plane.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,PlaneActivity.class);
                 startActivity(intent);
             }
         });

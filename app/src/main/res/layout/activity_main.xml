@@ -29,4 +29,11 @@
         android:id="@+id/wave"
         android:text="wave"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/plane"
+        android:text="plane"/>
+
+
 </LinearLayout>
